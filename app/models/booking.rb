@@ -6,7 +6,7 @@ class Booking < ActiveRecord::Base
 
 	def remaining_time
 		show_time = "#{show_date.to_date.strftime("%d/%m/%Y")} " + show.show_time_start.strftime("%H:%M:%S")
-		time_diff = (show_time.to_time - Time.now)
+		time_diff = (show_time.to_time - Time.current)
 	  unless time_diff.negative?
 		  hours = time_diff.round.abs / 3600
 

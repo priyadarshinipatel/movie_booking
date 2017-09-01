@@ -20,7 +20,7 @@
 				    <%= f.text_field :show_date, class: 'form-control', id: 'datetimepicker1',read_only: true%>
           </div>
           <div id="show_time_partials">
-	          <%#= render partial: "bookings/show_time", locals: {time: Time.now} %>
+	          <%#= render partial: "bookings/show_time", locals: {time: Time.current} %>
           </div>
           <input type="hidden" id="h_shows" name="h_shows"/>	
           <%= f.hidden_field :seat_ids %>
