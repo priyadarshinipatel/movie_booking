@@ -1,0 +1,23 @@
+<label>Select seat</label>
+<%= form_for 'show_time' do |f| %>
+	<%= f.collection_check_boxes(:seat_id, seats, :id, :number, class: "form-control", include_blank: "Select seats") %>
+<% end %>
+<script type="text/javascript">
+	$("input[name='show_time[seat_id][]']").on("click", function(){
+  		
+
+		var selectedShows = [];
+		$.each($("input[name='movie[show_id][]']:checked"), function(){            
+			selectedShows.push($(this).val());
+		});
+
+		if(selectedShows.length>1){
+		$.each($("input[name='show_time[seat_id][]']:checked"), function(){            
+			$(this).prop('checked', false);
+		});
+  		
+  		$(this).prop('checked', true);
+		}	
+  	})
+  
+</script>

@@ -1,0 +1,38 @@
+<br/>
+<div class="row">
+	<div class="col-md-1"> </div>
+	<div class="col-md-10 col-sm-12">
+		<div class="row">
+			<%= button_to 'Back', root_path, method: 'get', class: "btn btn-warning pull-right mar-rht-3" %>
+		</div>
+		<br/>
+		<div class="panel panel-primary">
+		  <div class="panel-heading panel-primary">Bookings List</div>
+		  <div class="panel-body">
+		  	<table class="table table-bordered table-striped">
+	  			<thead>
+			      <tr>
+			        <th>Movie</th>
+			        <th>Date</th>
+			        <th>Show</th>
+			      	<th>Seat/s</th>
+			      	<th>Remaining time</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+		  			<% @bookings.each do |booking|%>
+				      <tr>
+				        <td><%= booking.movie.name %></td>
+				        <td><%= booking.show_date %></td>
+				        <td><%= booking.show.show_name %></td>
+				        <td><%= booking.seats.map(&:number).to_sentence %></td>
+				        <td><%= booking.remaining_time %></td>
+				      </tr>
+				    <% end %>
+			    </tbody>
+	  		</table>
+		  </div>
+		</div>
+	</div>
+	<div class="col-md-1"> </div>
+</div>

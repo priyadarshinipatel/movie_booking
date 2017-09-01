@@ -1,0 +1,29 @@
+
+
+<label>Select show time</label>
+<%= form_for 'movie' do |f| %>
+	
+	<%= f.collection_check_boxes(:show_id, valid_show_times(time), :id, :show_name, class: "form-control", include_blank: "Select show time", id: "show_times_id") %>
+<% end %>
+
+
+<div id="show_time_seats">
+</div>
+<script type="text/javascript">
+	$("input[name='movie[show_id][]']").on("click", function(){
+  		
+			var selectedShows = [];
+			$.each($("input[name='movie[show_id][]']:checked"), function(){            
+				selectedShows.push($(this).val());
+			});
+
+  	$.ajax({
+  		url: "/change_seats",
+	    type: "get",
+	    datatype: 'script',
+	    data: {shows: selectedShows, movie_id: $("#booking_movies_id").val(), date: $("#datetimepicker1").val()}
+  	})
+  })
+</script>
+
+
